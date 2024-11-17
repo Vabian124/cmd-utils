@@ -9,6 +9,7 @@ import org.cmdutils.command.CommandEnvironment;
 import org.cmdutils.command.Commands;
 import org.cmdutils.terminal.gui.InGameTerminalGui;
 import org.cmdutils.terminal.logger.Logger;
+import net.minecraft.client.MinecraftClient;
 
 public class MenuInfoCommand extends Command {
     public MenuInfoCommand() {
@@ -42,7 +43,7 @@ public class MenuInfoCommand extends Command {
             logger.warn("Screen is null.\n");
         } else {
             logger.info("Screen\n");
-            logger.info("Title JSON: " + Text.Serialization.toJsonString(screen.getTitle()));
+            logger.info("Title JSON: " + Text.Serialization.toJsonString(screen.getTitle(), MinecraftClient.getInstance().getServer().getRegistryManager()));
             logger.info("Width: " + screen.width);
             logger.info("Height: " + screen.height + '\n');
         }
